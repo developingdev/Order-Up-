@@ -6,7 +6,7 @@ var React = require('react');
 var ReactDom = require('react-dom');
 var routes = require('./config/routes');
 
-var MenuItem = React.createClass({
+/*var MenuItem = React.createClass({
     addToCart: function(){
 
     },
@@ -37,7 +37,7 @@ var Menu = React.createClass({
             </ul>
         )
     }
-});
+});*/
 
 ReactDom.render(
     routes,

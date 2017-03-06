@@ -4,6 +4,7 @@ var MENU_ITEMS=[
 
 var React = require('react');
 var ReactDom = require('react-dom');
+var Home = require('./components/Home')
 var routes = require('./config/routes');
 
 /*var MenuItem = React.createClass({
@@ -40,6 +41,6 @@ var Menu = React.createClass({
 });*/
 
 ReactDom.render(
-    routes,
+    <Home />,
     document.getElementById('app')
 )

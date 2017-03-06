@@ -10,9 +10,6 @@ var MenuContainer = React.createClass({
             addToCart={this.props.addToCart}
             removeFromCart={this.props.removeFromCart} 
             header="In n Out Menu" />
-            /*<Menu>
-                {this.props.children}
-            </Menu>*/
         )
     }
 })

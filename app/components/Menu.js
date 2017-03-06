@@ -11,8 +11,8 @@ function Menu(props){
             </span>
             
             <span className='menuItemControls'>
-            <button className='btn btn-default' onClick={() =>  props.removeFromCart(item)}>-</button>
-            <button className='btn btn-default' onClick={() =>  props.addToCart(item)}>+</button>
+            <button className='btn btn-default btn-xs' onClick={() =>  props.removeFromCart(item)}>-</button>
+            <button className='btn btn-default btn-xs' onClick={() =>  props.addToCart(item)}>+</button>
             </span>
             
         </li>

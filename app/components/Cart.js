@@ -17,9 +17,6 @@ function Cart(props){
     var menuItems = props.menuItems;
     var listItems = Object.keys(menuItems).map((key) => 
         <CartListItem key={key} value={menuItems[key]} />
-        //     {key}
-        //     {menuItems[key].count}
-        // </li>
     );
     return(
         <div className='cart-container col-md-6'>

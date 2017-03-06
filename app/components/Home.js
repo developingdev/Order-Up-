@@ -9,12 +9,12 @@ const MenuItems = [
     { name: 'Hamburger' },
     { name: 'French Fries' },
     { name: 'Shake' }
-    
+
 ]
 
 var Home = React.createClass({
     getInitialState: function () {
-        var items = MenuItems.reduce(function(acc, val){
+        var items = MenuItems.reduce(function (acc, val) {
             acc[val.name] = {
                 count: 0
                 //Other info of item mapped here
@@ -30,7 +30,6 @@ var Home = React.createClass({
             menuItems: items,
             cartItems: []
         }
-
     },
     addToCart: function (item) {
         var items = this.state.menuItems;
@@ -46,14 +45,13 @@ var Home = React.createClass({
     removeFromCart: function (item) {
         var items = this.state.menuItems;
 
-        if(items[item.name].count > 0){
+        if (items[item.name].count > 0) {
             items[item.name].count--;
 
             this.setState({
                 menuItems: items
             })
         }
-
     },
     render: function () {
         return (
@@ -63,7 +61,11 @@ var Home = React.createClass({
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart} />
                 <CartContainer menuItems={this.state.menuItems} />
-                <span>COUNTER: {this.state.counter}</span>
+                <div className='actionBar col-xs-12 visible-xs-block'>
+                    <button type='button'>View Menu</button>
+                    <button type='button'>View Cart</button>
+
+                </div>
             </div>
 
         )

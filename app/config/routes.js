@@ -13,7 +13,7 @@ var routes = (
     <Router history={hashHistory}>
         <Route path='/' component={Main}>
             <IndexRoute component={Home} />
-            <Route path='Menu' component={MenuContainer} />
+            <Route path='menu' component={MenuContainer} />
             <Route path='Cart' component={CartContainer} />
         </Route>
     </Router>

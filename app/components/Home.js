@@ -2,7 +2,6 @@ var React = require('react');
 var MenuContainer = require('../containers/MenuContainer');
 var CartContainer = require('../containers/CartContainer');
 require("../style/style.less");
-
 const MenuItems = [
     { name: 'Double Double' },
     { name: 'Cheeseburger' },
@@ -11,6 +10,7 @@ const MenuItems = [
     { name: 'Shake' }
 
 ]
+
 
 var Home = React.createClass({
     getInitialState: function () {
@@ -28,7 +28,8 @@ var Home = React.createClass({
         return {
             counter: 0,
             menuItems: items,
-            cartItems: []
+            cartItems: [],
+            activeComponent: 'menu'
         }
     },
     addToCart: function (item) {
@@ -53,20 +54,40 @@ var Home = React.createClass({
             })
         }
     },
+    setActive: function(component){
+        console.log('setting active ' + component);
+        this.setState({
+            activeComponent: component
+        })
+    },
     render: function () {
         return (
             <div className='home-container col-md-12'>
                 <MenuContainer
                     menuItems={MenuItems}
                     addToCart={this.addToCart}
-                    removeFromCart={this.removeFromCart} />
+                    removeFromCart={this.removeFromCart}
+                    isActive={this.state.activeComponent == 'menu'}
+                     />
                 <CartContainer menuItems={this.state.menuItems} />
 
-                {/*<div className='actionBar visible-xs-inline'>
+                <div className='actionBar visible-xs-inline'>
                     <span>View Menu</span>
                     <span>View Cart</span>
-                </div>*/}
+                </div>
+                <div className='actionBar'>
+                    <a onClick={() => {this.setActive('menu')}}>
+                        <i className="fa fa-cutlery fa-2x" aria-hidden="true"></i>
+                    </a>
+                    <a onClick={() => {this.setActive('menu')}}>
+                        <i className="fa fa-glass fa-2x" aria-hidden="true"></i>
+                    </a>
+                    <a onClick={() => {this.setActive('cart')}}>
+                        <i className="fa fa-shopping-cart fa-2x" aria-hidden="true"></i>
+                    </a>
+                </div>
             </div>
+
 
         )
     }

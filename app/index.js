@@ -41,7 +41,7 @@ var Menu = React.createClass({
 });*/
 
 ReactDom.render(
-    // <Home />,
-    routes,
+    <Home />,
+    // routes,
     document.getElementById('app')
 )

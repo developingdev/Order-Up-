@@ -17,7 +17,6 @@ function Menu(props) {
 
         </li>
     );
-    console.log(props.className);
     return (
         <div className='menu-container col-md-6'>
             <h1 style={h1Style}>{props.header}</h1>

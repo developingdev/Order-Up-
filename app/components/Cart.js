@@ -1,13 +1,25 @@
 var React = require('react');
 var h1Style = require('../styles').h1Style;
 
-function Cart(props){
-    var cartItems = props.cartItems;
-    var listItems = Object.keys(cartItems).map((key) => 
-        <li key={key}>
-            {key}
-            {cartItems[key].count}
+function CartListItem(props){
+    if(props.value.count > 0)
+    return(
+        <li>
+            {props.value.count}
         </li>
+    )
+    else
+    return null
+    
+}
+
+function Cart(props){
+    var menuItems = props.menuItems;
+    var listItems = Object.keys(menuItems).map((key) => 
+        <CartListItem key={key} value={menuItems[key]} />
+        //     {key}
+        //     {menuItems[key].count}
+        // </li>
     );
     return(
         <div className='cart-container col-md-6'>

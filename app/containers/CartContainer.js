@@ -8,7 +8,7 @@ var CartContainer = React.createClass({
             
             <div className='cart-container'>
                 <h1 style={h1Style}>Cart</h1>
-                <Cart cartItems = {this.props.cartItems} />
+                <Cart menuItems = {this.props.menuItems} />
             </div>
         )
     }

@@ -6,9 +6,15 @@ function Menu(props){
     const menuItems = props.menuItems;
     const listItems = menuItems.map((item) => 
         <li key={item.name}>
-            {item.name}
-            <button onClick={() =>  props.removeFromCart(item)}>-</button>
-            <button onClick={() =>  props.addToCart(item)}>+</button>
+            <span className='menuItemName'>
+{item.name}
+            </span>
+            
+            <span className='menuItemControls'>
+            <button className='btn btn-default' onClick={() =>  props.removeFromCart(item)}>-</button>
+            <button className='btn btn-default' onClick={() =>  props.addToCart(item)}>+</button>
+            </span>
+            
         </li>
     );
     return(

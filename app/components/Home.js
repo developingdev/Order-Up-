@@ -5,48 +5,54 @@ require("../style/style.less");
 
 const MenuItems = [
     { name: 'Double Double' },
-    { name: 'Cheeseburger' }
+    { name: 'Cheeseburger' },
+    { name: 'Hamburger' },
+    { name: 'French Fries' },
+    { name: 'Shake' }
+    
 ]
 
 var Home = React.createClass({
     getInitialState: function () {
+        var items = MenuItems.reduce(function(acc, val){
+            acc[val.name] = {
+                count: 0
+                //Other info of item mapped here
+                //Nutrional info, customization options
+            }
+
+            return acc;
+        }, {})
+
+        console.log(items);
         return {
             counter: 0,
+            menuItems: items,
             cartItems: []
         }
 
     },
     addToCart: function (item) {
-        var items = this.state.cartItems;
+        var items = this.state.menuItems;
 
-        if (items[item.name]) {
-            items[item.name].count++;
-        } else {
-            items[item.name] = {
-                count: 1
-            }
-        }
+        items[item.name].count++;
 
         this.setState({
-            cartItems: items
+            menuItems: items
         })
+
+        console.log(this.state.menuItems);
     },
     removeFromCart: function (item) {
-        var items = this.state.cartItems;
+        var items = this.state.menuItems;
 
-        if (items[item.name]) {
+        if(items[item.name].count > 0){
             items[item.name].count--;
 
-            if (items[item.name].count == 0)
-                delete items[item.name];
-
             this.setState({
-                cartItems: items
+                menuItems: items
             })
-
-
         }
-
 
     },
     render: function () {
@@ -56,7 +62,7 @@ var Home = React.createClass({
                     menuItems={MenuItems}
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart} />
-                <CartContainer cartItems={this.state.cartItems} />
+                <CartContainer menuItems={this.state.menuItems} />
                 <span>COUNTER: {this.state.counter}</span>
             </div>
 

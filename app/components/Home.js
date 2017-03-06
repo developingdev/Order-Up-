@@ -61,11 +61,11 @@ var Home = React.createClass({
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart} />
                 <CartContainer menuItems={this.state.menuItems} />
-                <div className='actionBar col-xs-12 visible-xs-block'>
-                    <button type='button'>View Menu</button>
-                    <button type='button'>View Cart</button>
 
-                </div>
+                {/*<div className='actionBar visible-xs-inline'>
+                    <span>View Menu</span>
+                    <span>View Cart</span>
+                </div>*/}
             </div>
 
         )

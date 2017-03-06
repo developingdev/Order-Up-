@@ -2,22 +2,23 @@ var React = require('react');
 var h1Style = require('../styles').h1Style;
 //var PropTypes = React.PropTypes;
 
-function Menu(props){
+function Menu(props) {
     const menuItems = props.menuItems;
-    const listItems = menuItems.map((item) => 
+    const listItems = menuItems.map((item) =>
         <li key={item.name}>
             <span className='menuItemName'>
-{item.name}
+                {item.name}
             </span>
-            
+
             <span className='menuItemControls'>
-            <button className='btn btn-default btn-xs' onClick={() =>  props.removeFromCart(item)}>-</button>
-            <button className='btn btn-default btn-xs' onClick={() =>  props.addToCart(item)}>+</button>
+                <button className='btn btn-default btn-xs' onClick={() => props.removeFromCart(item)}>-</button>
+                <button className='btn btn-default btn-xs' onClick={() => props.addToCart(item)}>+</button>
             </span>
-            
+
         </li>
     );
-    return(
+    console.log(props.className);
+    return (
         <div className='menu-container col-md-6'>
             <h1 style={h1Style}>{props.header}</h1>
             <ul>{listItems}</ul>
@@ -27,8 +28,8 @@ function Menu(props){
 
 
 //Menu.propTypes = {
- //   header: React.PropTypes.string,
- //   menuItems: React.PropTypes.array
+//   header: React.PropTypes.string,
+//   menuItems: React.PropTypes.array
 //}
 
 

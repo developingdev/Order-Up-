@@ -1,8 +1,42 @@
 @red: red;
-
-
+h1{
+    margin:0;
+    
+}
+.main-container{
+    height: 100vh;
+    padding:0;
+}
+.actionBar{
+    position: absolute;
+    bottom:0;
+    width:100%;
+    display:flex;
+    justify-content: space-around;
+    min-height: 48px;
+    button, span, a{
+        color:white;
+        background-color: @red;
+        flex-grow:1;
+        display: flex;
+        border:solid 1px #fff;
+        i{
+            margin:auto;
+        }
+        // text-align: center;
+        // font-size: 36px;
+        // vertical-align: middle;
+        // height: 48px;
+        // flex-grow:1;
+        // border: solid 1px red;
+        // background-color:@red;
+        // color:white;
+        // margin:1px;
+        // display: inline-block;
+    }
+}
 .menu-container{
-    ont-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: bold;
     ul{
         margin: 0;

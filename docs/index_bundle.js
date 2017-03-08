@@ -7671,7 +7671,6 @@ var Home = React.createClass({
     displayName: 'Home',
 
     getInitialState: function () {
-        console.log(Data.DrinkItems);
         var items = Data.MenuItems.reduce(function (acc, val) {
             acc[val.name] = {
                 count: 0
@@ -7691,14 +7690,14 @@ var Home = React.createClass({
 
             return acc;
         }, items);
-
-        console.log(items);
+        var isSmall = this.screenIsSmall();
         return {
             counter: 0,
             menuItems: items,
             drinkItems: drinkItems,
             cartItems: [],
-            activeComponent: 'menu'
+            activeComponent: 'menu',
+            screenIsSmall: isSmall
         };
     },
     addToCart: function (item) {
@@ -7709,8 +7708,6 @@ var Home = React.createClass({
         this.setState({
             menuItems: items
         });
-
-        console.log(this.state.menuItems);
     },
     removeFromCart: function (item) {
         var items = this.state.menuItems;
@@ -7723,49 +7720,55 @@ var Home = React.createClass({
             });
         }
     },
+
     setActive: function (component) {
         this.setState({
             activeComponent: component
         });
     },
+    updateScreenSize: function () {
+        var isSmall = this.screenIsSmall();
+        this.setState({
+            screenIsSmall: isSmall
+        });
+    },
+    screenIsSmall: function () {
+        return document.body.clientWidth < 768;
+    },
+    componentDidMount() {
+        window.addEventListener('resize', this.updateScreenSize);
+    },
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateScreenSize);
+    },
     render: function () {
         return React.createElement(
             'div',
-            { className: 'home-container col-md-12' },
-            React.createElement(MenuContainer, {
-                menuItems: Data.MenuItems,
-                addToCart: this.addToCart,
-                removeFromCart: this.removeFromCart,
-                isActive: this.state.activeComponent == 'menu',
-                header: 'Food'
-            }),
-            React.createElement(MenuContainer, {
-                menuItems: Data.DrinkItems,
-                addToCart: this.addToCart,
-                removeFromCart: this.removeFromCart,
-                isActive: this.state.activeComponent == 'drink',
-                header: 'Drinks'
-            }),
+            { className: 'home-container col-sm-12' },
+            React.createElement(
+                'div',
+                { className: 'col-sm-6 menu-wrapper' },
+                React.createElement(MenuContainer, {
+                    menuItems: Data.MenuItems,
+                    addToCart: this.addToCart,
+                    removeFromCart: this.removeFromCart,
+                    isActive: this.state.activeComponent == 'menu' || !this.state.screenIsSmall,
+                    header: 'Food'
+                }),
+                React.createElement(MenuContainer, {
+                    menuItems: Data.DrinkItems,
+                    addToCart: this.addToCart,
+                    removeFromCart: this.removeFromCart,
+                    isActive: this.state.activeComponent == 'drink' || !this.state.screenIsSmall,
+                    header: 'Drinks'
+                })
+            ),
             React.createElement(CartContainer, {
                 menuItems: this.state.menuItems,
-                isActive: this.state.activeComponent == 'cart' }),
+                isActive: this.state.activeComponent == 'cart' || !this.state.screenIsSmall }),
             React.createElement(
                 'div',
-                { className: 'actionBar visible-xs-inline' },
-                React.createElement(
-                    'span',
-                    null,
-                    'View Menu'
-                ),
-                React.createElement(
-                    'span',
-                    null,
-                    'View Cart'
-                )
-            ),
-            React.createElement(
-                'div',
-                { className: 'actionBar' },
+                { className: 'actionBar hidden-sm hidden-md hidden-lg' },
                 React.createElement(
                     'a',
                     { onClick: () => {
@@ -12503,7 +12506,7 @@ function Cart(props) {
     React.createElement(CartListTableItem, { key: key, value: menuItems[key], name: key }));
     return React.createElement(
         'div',
-        { className: 'cart-container col-md-6' },
+        { className: 'cart-container col-sm-6' },
         React.createElement(
             'table',
             { className: 'table' },
@@ -12518,7 +12521,11 @@ function Cart(props) {
                 React.createElement(
                     'tr',
                     null,
-                    React.createElement('td', null),
+                    React.createElement(
+                        'td',
+                        null,
+                        'Item'
+                    ),
                     React.createElement(
                         'td',
                         { className: 'text-center' },
@@ -12654,7 +12661,7 @@ function Menu(props) {
     ));
     return React.createElement(
         'div',
-        { className: 'menu-container col-md-6' },
+        { className: 'menu-container col-sm-12' },
         React.createElement(
             'h1',
             { style: h1Style, className: 'text-center' },
@@ -26235,7 +26242,7 @@ exports = module.exports = __webpack_require__(116)();
 
 
 // module
-exports.push([module.i, "h1{margin:0}.home-container{height:100vh;padding:0}.actionBar{position:absolute;bottom:0;width:100%;display:flex;justify-content:space-around;min-height:48px}.actionBar a,.actionBar button,.actionBar span{color:#fff;background-color:red;flex-grow:1;display:flex;border:1px solid #f5f5f5}.actionBar a i,.actionBar button i,.actionBar span i{margin:auto}.menu-container{background-color:#f5f5f5;height:100vh;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:700}.menu-container ul{margin:1rem 0 0;padding:0;border:1px solid #000;background-color:#fff}.menu-container ul li{list-style-type:none;display:flex;align-content:space-between;margin-bottom:1rem;color:red;text-transform:uppercase}.menu-container ul li .btn,.menu-container ul li span{flex-grow:1;border:none}.menu-container ul li .menuItemName{font-size:2rem}.menu-container ul li .btn{font-weight:700;min-width:40px;max-width:40px}", ""]);
+exports.push([module.i, "h1{margin:0}.home-container{padding:0}.actionBar{position:absolute;bottom:0;width:100%;display:flex;justify-content:space-around;min-height:48px}.actionBar a,.actionBar button,.actionBar span{color:#fff;background-color:red;flex-grow:1;display:flex;border:1px solid #f5f5f5}.actionBar a i,.actionBar button i,.actionBar span i{margin:auto}.menu-wrapper{background-color:#f5f5f5;height:100vh}.menu-container{margin-bottom:1rem;background-color:#f5f5f5;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:700}.menu-container ul{margin:1rem 0 0;padding:0;border:1px solid #000;background-color:#fff}.menu-container ul li{list-style-type:none;display:flex;align-content:space-between;margin-bottom:1rem;color:red;text-transform:uppercase}.menu-container ul li .btn,.menu-container ul li span{flex-grow:1;border:none}.menu-container ul li .menuItemName{font-size:2rem}.menu-container ul li .btn{font-weight:700;min-width:40px;max-width:40px}", ""]);
 
 // exports
 

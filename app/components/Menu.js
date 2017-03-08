@@ -6,20 +6,20 @@ function Menu(props) {
     const menuItems = props.menuItems;
     const listItems = menuItems.map((item) =>
         <li key={item.name}>
-            <span className='menuItemName'>
+            <button className='btn btn-default btn-xs' onClick={() => props.removeFromCart(item)}>-</button>
+            <span className='menuItemName text-center'>
                 {item.name}
             </span>
+            <button className='btn btn-default btn-xs' onClick={() => props.addToCart(item)}>+</button>
 
-            <span className='menuItemControls'>
-                <button className='btn btn-default btn-xs' onClick={() => props.removeFromCart(item)}>-</button>
-                <button className='btn btn-default btn-xs' onClick={() => props.addToCart(item)}>+</button>
-            </span>
+            {/*<span className='menuItemControls'>
+            </span>*/}
 
         </li>
     );
     return (
         <div className='menu-container col-md-6'>
-            <h1 style={h1Style}>{props.header}</h1>
+            <h1 style={h1Style} className='text-center'>{props.header}</h1>
             <ul>{listItems}</ul>
         </div>
     )

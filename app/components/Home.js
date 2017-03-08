@@ -75,7 +75,6 @@ var Home = React.createClass({
         }
     },
     setActive: function(component){
-        console.log('setting active ' + component);
         this.setState({
             activeComponent: component
         })

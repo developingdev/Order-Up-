@@ -43,35 +43,59 @@ h1{
         padding: 0;
         border:solid 1px black;
         li{
+            list-style-type: none;
+            display:flex;
+            align-content: space-between;
+            // width: 100%;
+            margin-bottom: 1rem;
             color: @red;
             text-transform: uppercase;
-            list-style-type:none;
-            display: block;
-            position:relative;
-            font-size: 3rem;
-            height: 5rem;
-            line-height: 5rem;
-            
-            span{
-                position: absolute;
-                top: 50%;
-                
-                transform: translateY(-50%);
-            }
-            .menuItemName{
-                left:1rem;
-            }
-            .menuItemControls{
+            span, .btn{
                 // display:inline-block;
-                // position:absolute;
-                // right: 0;
-                // vertical-align: middle;
-                right: 1rem;
-                .btn{
-                    display: inline-block;
-                    vertical-align: middle;
-                }
+                // flex-basis:1;
+                flex-grow: 1;
+                // max-width: 40px;
+                border:none;
             }
+            span{
+                font-size: 2rem;
+            }
+
+            .btn{
+                font-weight: bold;
+                min-width: 40px;
+                max-width: 40px;
+            }
+            // color: @red;
+            // text-transform: uppercase;
+            // list-style-type:none;
+            // display: block;
+            // position:relative;
+            // font-size: 3rem;
+            // height: 5rem;
+            // line-height: 5rem;
+            
+            // span{
+            //     position: absolute;
+            //     top: 50%;
+                
+            //     transform: translateY(-50%);
+            // }
+            // .menuItemName{
+            //     left:1rem;
+            // }
+            // .btn{
+            //     display: inline-block;
+            //     vertical-align: middle;
+            // }
+
+            // .menuItemControls{
+            //     right: 1rem;
+            //     .btn{
+            //         display: inline-block;
+            //         vertical-align: middle;
+            //     }
+            // }
         }
     }
 

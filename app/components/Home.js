@@ -2,23 +2,7 @@ var React = require('react');
 var MenuContainer = require('../containers/MenuContainer');
 var CartContainer = require('../containers/CartContainer');
 var Data = require('../data')
-
 require("../style/style.less");
-// const MenuItems = [
-//     { name: 'Double Double' },
-//     { name: 'Cheeseburger' },
-//     { name: 'Hamburger' },
-//     { name: 'French Fries' },
-//     { name: 'Shake' }
-// ]
-// const DrinkItems = [
-//     { name: 'Soda' },
-//     { name: 'Cheeseburger' },
-//     { name: 'Hamburger' },
-//     { name: 'French Fries' },
-//     { name: 'Shake' }
-// ]
-
 
 var Home = React.createClass({
     getInitialState: function () {
@@ -87,12 +71,14 @@ var Home = React.createClass({
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart}
                     isActive={this.state.activeComponent == 'menu'}
+                    header='Food'
                      />
                 <MenuContainer
                     menuItems={Data.DrinkItems}
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart}
                     isActive={this.state.activeComponent == 'drink'}
+                    header='Drinks'
                      />
                 <CartContainer 
                     menuItems={this.state.menuItems}

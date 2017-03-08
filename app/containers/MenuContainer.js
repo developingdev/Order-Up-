@@ -12,7 +12,7 @@ var MenuContainer = React.createClass({
                 menuItems={this.props.menuItems}
                 addToCart={this.props.addToCart}
                 removeFromCart={this.props.removeFromCart}
-                header="In n Out Menu" />
+                header={this.props.header} />
         )
         else return null
     }

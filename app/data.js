@@ -1,21 +1,24 @@
-const MenuItems = [
+const RestaurantName = '';
+
+const FoodMenu = [
     { name: 'Double Double' },
     { name: 'Cheeseburger' },
     { name: 'Hamburger' },
-    { name: 'French Fries' },
-    { name: 'Shake' }
+    { name: 'French Fries' }
 ]
-const DrinkItems = [
+const DrinkMenu = [
     { name: 'Soda' },
-    { name: 'Cheeseburger' },
-    { name: 'Hamburger' },
-    { name: 'French Fries' },
-    { name: 'Shake' }
+    { name: 'Lemonade' },
+    { name: 'Ice Tea' },
+    { name: 'Shake' },
+    { name: 'Milk' },
+    { name: 'Coffee' }
 ]
 
 var Data = {
-    DrinkItems: DrinkItems,
-    MenuItems: MenuItems
+    RestaurantName: RestaurantName,
+    DrinkItems: DrinkMenu,
+    MenuItems: FoodMenu
 }
 
 module.exports = Data;

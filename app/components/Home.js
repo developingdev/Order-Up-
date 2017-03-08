@@ -26,14 +26,15 @@ var Home = React.createClass({
 
             return acc;
         }, items)
-
+var isSmall = this.screenIsSmall();
         console.log(items);
         return {
             counter: 0,
             menuItems: items,
             drinkItems: drinkItems,
             cartItems: [],
-            activeComponent: 'menu'
+            activeComponent: 'menu',
+            screenIsSmall: isSmall
         }
     },
     addToCart: function (item) {
@@ -58,37 +59,56 @@ var Home = React.createClass({
             })
         }
     },
+
     setActive: function(component){
         this.setState({
             activeComponent: component
         })
     },
+    updateScreenSize: function(){
+        var isSmall = this.screenIsSmall();
+        this.setState({
+            screenIsSmall: isSmall
+        })
+    },
+    screenIsSmall: function(){
+        return document.body.clientWidth < 768;
+    },
+    componentDidMount(){
+        window.addEventListener('resize', this.updateScreenSize);
+    },
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.updateScreenSize);
+    },
     render: function () {
         return (
-            <div className='home-container col-md-12'>
+            <div className='home-container col-sm-12'>
+                <div className='col-sm-6 menu-wrapper'>
                 <MenuContainer
                     menuItems={Data.MenuItems}
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart}
-                    isActive={this.state.activeComponent == 'menu'}
+                    isActive={this.state.activeComponent == 'menu' || !(this.state.screenIsSmall)}
                     header='Food'
                      />
                 <MenuContainer
                     menuItems={Data.DrinkItems}
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart}
-                    isActive={this.state.activeComponent == 'drink'}
+                    isActive={this.state.activeComponent == 'drink'  || !(this.state.screenIsSmall)}
                     header='Drinks'
                      />
-                <CartContainer 
-                    menuItems={this.state.menuItems}
-                    isActive={this.state.activeComponent == 'cart'} />
+                </div>
 
-                <div className='actionBar visible-xs-inline'>
+                <CartContainer
+                    menuItems={this.state.menuItems}
+                    isActive={this.state.activeComponent == 'cart'  || !(this.state.screenIsSmall)} />
+
+                {/*<div className='actionBar visible-xs-inline'>
                     <span>View Menu</span>
                     <span>View Cart</span>
-                </div>
-                <div className='actionBar'>
+                </div>*/}
+                <div className='actionBar hidden-sm hidden-md hidden-lg'>
                     <a onClick={() => {this.setActive('menu')}}>
                         <i className="fa fa-cutlery fa-2x" aria-hidden="true"></i>
                     </a>

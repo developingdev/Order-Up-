@@ -34,7 +34,7 @@ function Cart(props) {
 
     );
     return (
-        <div className='cart-container col-md-6'>
+        <div className='cart-container col-sm-6'>
 
             <table className="table">
                 <caption>YOUR ORDER</caption>

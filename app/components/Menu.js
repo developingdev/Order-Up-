@@ -18,7 +18,7 @@ function Menu(props) {
         </li>
     );
     return (
-        <div className='menu-container col-md-6'>
+        <div className='menu-container col-sm-12'>
             <h1 style={h1Style} className='text-center'>{props.header}</h1>
             <ul>{listItems}</ul>
         </div>

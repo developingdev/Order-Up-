@@ -1,26 +1,29 @@
 var React = require('react');
 var MenuContainer = require('../containers/MenuContainer');
 var CartContainer = require('../containers/CartContainer');
+var Data = require('../data')
+
 require("../style/style.less");
-const MenuItems = [
-    { name: 'Double Double' },
-    { name: 'Cheeseburger' },
-    { name: 'Hamburger' },
-    { name: 'French Fries' },
-    { name: 'Shake' }
-]
-const DrinkItems = [
-    { name: 'Soda' },
-    { name: 'Cheeseburger' },
-    { name: 'Hamburger' },
-    { name: 'French Fries' },
-    { name: 'Shake' }
-]
+// const MenuItems = [
+//     { name: 'Double Double' },
+//     { name: 'Cheeseburger' },
+//     { name: 'Hamburger' },
+//     { name: 'French Fries' },
+//     { name: 'Shake' }
+// ]
+// const DrinkItems = [
+//     { name: 'Soda' },
+//     { name: 'Cheeseburger' },
+//     { name: 'Hamburger' },
+//     { name: 'French Fries' },
+//     { name: 'Shake' }
+// ]
 
 
 var Home = React.createClass({
     getInitialState: function () {
-        var items = MenuItems.reduce(function (acc, val) {
+        console.log(Data.DrinkItems);
+        var items = Data.MenuItems.reduce(function (acc, val) {
             acc[val.name] = {
                 count: 0
                 //Other info of item mapped here
@@ -30,7 +33,7 @@ var Home = React.createClass({
             return acc;
         }, {})
 
-        var drinkItems = DrinkItems.reduce(function (acc, val) {
+        var drinkItems = Data.DrinkItems.reduce(function (acc, val) {
             acc[val.name] = {
                 count: 0
                 //Other info of item mapped here
@@ -81,13 +84,13 @@ var Home = React.createClass({
         return (
             <div className='home-container col-md-12'>
                 <MenuContainer
-                    menuItems={MenuItems}
+                    menuItems={Data.MenuItems}
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart}
                     isActive={this.state.activeComponent == 'menu'}
                      />
                 <MenuContainer
-                    menuItems={DrinkItems}
+                    menuItems={Data.DrinkItems}
                     addToCart={this.addToCart}
                     removeFromCart={this.removeFromCart}
                     isActive={this.state.activeComponent == 'drink'}

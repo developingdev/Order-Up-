@@ -7815,7 +7815,7 @@ var CartContainer = React.createClass({
             React.createElement(
                 'h1',
                 { style: h1Style, className: 'text-center' },
-                'Cart'
+                'Your Order'
             ),
             React.createElement(Cart, { menuItems: this.props.menuItems })
         );else return null;
@@ -12504,17 +12504,13 @@ function Cart(props) {
     var listItems = Object.keys(menuItems).map(key =>
     // <CartListItem key={key} value={menuItems[key]} />
     React.createElement(CartListTableItem, { key: key, value: menuItems[key], name: key }));
+
     return React.createElement(
         'div',
         { className: 'cart-container col-sm-6' },
         React.createElement(
             'table',
             { className: 'table' },
-            React.createElement(
-                'caption',
-                null,
-                'YOUR ORDER'
-            ),
             React.createElement(
                 'thead',
                 null,

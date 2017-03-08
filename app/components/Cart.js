@@ -40,7 +40,7 @@ function Cart(props) {
                 <caption>YOUR ORDER</caption>
                 <thead>
                     <tr>
-                        <td></td>
+                        <td>Item</td>
                         <td className='text-center'>Quantity</td>
                     </tr>
                 </thead>

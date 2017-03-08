@@ -1,6 +1,8 @@
 # Order Up!
 
-Interactive restaurant menu board with functional shipping cart built using React. Currently best viewed on mobile and on smaller screen - large style coming soon!.
+Interactive restaurant menu board with functional shipping cart built using React. 
+
+Default menu from In n Out - because they're awesome!
 
 ## Customization
 

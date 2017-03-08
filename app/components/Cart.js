@@ -33,11 +33,12 @@ function Cart(props) {
         <CartListTableItem key={key} value={menuItems[key]} name={key} />
 
     );
+
+
     return (
         <div className='cart-container col-sm-6'>
 
             <table className="table">
-                <caption>YOUR ORDER</caption>
                 <thead>
                     <tr>
                         <td>Item</td>

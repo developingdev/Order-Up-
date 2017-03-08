@@ -8,7 +8,7 @@ var CartContainer = React.createClass({
             return (
 
                 <div className='cart-container'>
-                    <h1 style={h1Style} className='text-center'>Cart</h1>
+                    <h1 style={h1Style} className='text-center'>Your Order</h1>
                     <Cart menuItems={this.props.menuItems} />
                 </div>
             )

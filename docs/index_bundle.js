@@ -7665,23 +7665,7 @@ var React = __webpack_require__(4);
 var MenuContainer = __webpack_require__(67);
 var CartContainer = __webpack_require__(66);
 var Data = __webpack_require__(115);
-
 __webpack_require__(235);
-// const MenuItems = [
-//     { name: 'Double Double' },
-//     { name: 'Cheeseburger' },
-//     { name: 'Hamburger' },
-//     { name: 'French Fries' },
-//     { name: 'Shake' }
-// ]
-// const DrinkItems = [
-//     { name: 'Soda' },
-//     { name: 'Cheeseburger' },
-//     { name: 'Hamburger' },
-//     { name: 'French Fries' },
-//     { name: 'Shake' }
-// ]
-
 
 var Home = React.createClass({
     displayName: 'Home',
@@ -7752,13 +7736,15 @@ var Home = React.createClass({
                 menuItems: Data.MenuItems,
                 addToCart: this.addToCart,
                 removeFromCart: this.removeFromCart,
-                isActive: this.state.activeComponent == 'menu'
+                isActive: this.state.activeComponent == 'menu',
+                header: 'Food'
             }),
             React.createElement(MenuContainer, {
                 menuItems: Data.DrinkItems,
                 addToCart: this.addToCart,
                 removeFromCart: this.removeFromCart,
-                isActive: this.state.activeComponent == 'drink'
+                isActive: this.state.activeComponent == 'drink',
+                header: 'Drinks'
             }),
             React.createElement(CartContainer, {
                 menuItems: this.state.menuItems,
@@ -7825,7 +7811,7 @@ var CartContainer = React.createClass({
             { className: 'cart-container' },
             React.createElement(
                 'h1',
-                { style: h1Style },
+                { style: h1Style, className: 'text-center' },
                 'Cart'
             ),
             React.createElement(Cart, { menuItems: this.props.menuItems })
@@ -7850,7 +7836,7 @@ var MenuContainer = React.createClass({
             menuItems: this.props.menuItems,
             addToCart: this.props.addToCart,
             removeFromCart: this.props.removeFromCart,
-            header: 'In n Out Menu' });else return null;
+            header: this.props.header });else return null;
     }
 });
 
@@ -12723,12 +12709,15 @@ module.exports = routes;
 /* 115 */
 /***/ (function(module, exports) {
 
-const MenuItems = [{ name: 'Double Double' }, { name: 'Cheeseburger' }, { name: 'Hamburger' }, { name: 'French Fries' }, { name: 'Shake' }];
-const DrinkItems = [{ name: 'Soda' }, { name: 'Cheeseburger' }, { name: 'Hamburger' }, { name: 'French Fries' }, { name: 'Shake' }];
+const RestaurantName = '';
+
+const FoodMenu = [{ name: 'Double Double' }, { name: 'Cheeseburger' }, { name: 'Hamburger' }, { name: 'French Fries' }];
+const DrinkMenu = [{ name: 'Soda' }, { name: 'Lemonade' }, { name: 'Ice Tea' }, { name: 'Shake' }, { name: 'Milk' }, { name: 'Coffee' }];
 
 var Data = {
-    DrinkItems: DrinkItems,
-    MenuItems: MenuItems
+    RestaurantName: RestaurantName,
+    DrinkItems: DrinkMenu,
+    MenuItems: FoodMenu
 };
 
 module.exports = Data;

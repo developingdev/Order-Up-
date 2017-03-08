@@ -1,3 +1,11 @@
 # Order Up!
 
-Interactive restaurant menu board with functional shipping cart built using React
+Interactive restaurant menu board with functional shipping cart built using React. Currently best viewed on mobile and on smaller screen - large style coming soon!.
+
+## Customization
+
+Edit the data.js file to customize the menu items.
+More customizations (styling, options for each item) coming soon!
+
+##Built Using
+React, LESS

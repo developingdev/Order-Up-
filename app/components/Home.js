@@ -8,7 +8,13 @@ const MenuItems = [
     { name: 'Hamburger' },
     { name: 'French Fries' },
     { name: 'Shake' }
-
+]
+const DrinkItems = [
+    { name: 'Soda' },
+    { name: 'Cheeseburger' },
+    { name: 'Hamburger' },
+    { name: 'French Fries' },
+    { name: 'Shake' }
 ]
 
 
@@ -24,10 +30,21 @@ var Home = React.createClass({
             return acc;
         }, {})
 
+        var drinkItems = DrinkItems.reduce(function (acc, val) {
+            acc[val.name] = {
+                count: 0
+                //Other info of item mapped here
+                //Nutrional info, customization options
+            }
+
+            return acc;
+        }, items)
+
         console.log(items);
         return {
             counter: 0,
             menuItems: items,
+            drinkItems: drinkItems,
             cartItems: [],
             activeComponent: 'menu'
         }
@@ -69,7 +86,15 @@ var Home = React.createClass({
                     removeFromCart={this.removeFromCart}
                     isActive={this.state.activeComponent == 'menu'}
                      />
-                <CartContainer menuItems={this.state.menuItems} />
+                <MenuContainer
+                    menuItems={DrinkItems}
+                    addToCart={this.addToCart}
+                    removeFromCart={this.removeFromCart}
+                    isActive={this.state.activeComponent == 'drink'}
+                     />
+                <CartContainer 
+                    menuItems={this.state.menuItems}
+                    isActive={this.state.activeComponent == 'cart'} />
 
                 <div className='actionBar visible-xs-inline'>
                     <span>View Menu</span>
@@ -79,7 +104,7 @@ var Home = React.createClass({
                     <a onClick={() => {this.setActive('menu')}}>
                         <i className="fa fa-cutlery fa-2x" aria-hidden="true"></i>
                     </a>
-                    <a onClick={() => {this.setActive('menu')}}>
+                    <a onClick={() => {this.setActive('drink')}}>
                         <i className="fa fa-glass fa-2x" aria-hidden="true"></i>
                     </a>
                     <a onClick={() => {this.setActive('cart')}}>
